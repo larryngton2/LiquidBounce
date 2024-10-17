@@ -150,6 +150,7 @@ object ModuleManager : Listenable, Iterable<Module> by modules {
             ModuleAntiHunger,
             ModuleClip,
             ModuleResetVL,
+            ModuleIntaveFullDisabler,
             ModuleDamage,
             ModuleDisabler,
             ModuleForceUnicodeChat,
