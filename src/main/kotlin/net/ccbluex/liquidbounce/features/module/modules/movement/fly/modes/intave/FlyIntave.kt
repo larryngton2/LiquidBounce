@@ -32,6 +32,6 @@ internal object FlyIntave : Choice("FlyIntave") {
         get() = modes
 
     val repeatable = repeatable {
-        chat("cack baetion")
+        chat("cack baetion abeootion")
     }
 }
