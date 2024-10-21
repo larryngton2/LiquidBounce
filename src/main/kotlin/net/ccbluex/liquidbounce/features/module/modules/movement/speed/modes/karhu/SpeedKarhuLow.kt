@@ -25,11 +25,9 @@ import net.ccbluex.liquidbounce.config.ChoiceConfigurable
 import net.ccbluex.liquidbounce.event.repeatable
 import net.ccbluex.liquidbounce.utils.client.chat
 import net.ccbluex.liquidbounce.utils.entity.downwards
-import net.ccbluex.liquidbounce.utils.entity.upwards
 
 class SpeedKarhuLow(override val parent: ChoiceConfigurable<*>) : Choice("KarhuLow") {
     private var shouldLowHop = false
-    private var airTicks = 0
 
     val repeatable = repeatable {
         if (player.isOnGround && shouldLowHop) {
@@ -39,12 +37,11 @@ class SpeedKarhuLow(override val parent: ChoiceConfigurable<*>) : Choice("KarhuL
             shouldLowHop = false
         } else if (player.isOnGround) player.jump()
 
-        if (player.isOnGround) {
-            airTicks = 0
-        } else airTicks++
+        if (player.isOnGround && !shouldLowHop) {
+            player.jump()
+            shouldLowHop = true
+        }
 
-        if (airTicks == 5) shouldLowHop = true
-
-        chat("$airTicks, $shouldLowHop")
+        chat("$shouldLowHop")
     }
 }
